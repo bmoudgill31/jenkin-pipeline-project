@@ -1,9 +1,9 @@
 - hosts: all
   tasks:
-   - name: stop container
+   - name: stop webaap container 
      shell: docker container stop webaap
      ignore_errors: yes
-   - name: remove container
+   - name: remove webaap container
      shell: docker container rm webaap
      ignore_errors: yes
    - name: remove docker image
