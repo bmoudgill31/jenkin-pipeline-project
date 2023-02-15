@@ -5,6 +5,6 @@
    - name: remove container
      shell: docker container rm webaap
    - name: remove docker image
-     shell: docker image rmi raoshahzaib/webaap
+     shell: docker image rmi bmoudgill31/edureka_demo
    - name: create new container
-     shell: docker container run -itd --name webaap -p 9000:80 raoshahzaib/webaap
+     shell: docker container run -itd --name webaap -p 8090:80 bmoudgill31/edureka_demo
