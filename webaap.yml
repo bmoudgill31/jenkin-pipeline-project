@@ -1,10 +1,12 @@
-- hosts: all
-  tasks:
-   - name: stop container
-     shell: docker container stop webaap
-   - name: remove container
-     shell: docker container rm webaap
-   - name: remove docker image
-     shell: docker image rmi bmoudgill31/edureka_demo
-   - name: create new container
-     shell: docker container run -itd --name webaap -p 8090:80 bmoudgill31/edureka_demo
+FROM  nginx:latest
+MAINTAINER raoshahzaibtariq@gmail.com
+RUN apt-get update && apt-get install -y nginx \
+ zip\
+ unzip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page287/doni-charity.zip /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+RUN unzip doni-charity.zip
+RUN cp -r html/* /usr/share/nginx/html
+RUN rm -rf html doni-charity.zip
+#CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
