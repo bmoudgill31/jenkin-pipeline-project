@@ -1,6 +1,12 @@
-FROM ubuntu:18.04
-RUN apt update
-RUN apt install y apache2
-COPY index.html /var/www/html/
-CMD ["apache2ctl", D", "FOREGROUND"]
+FROM  nginx:latest
+MAINTAINER raoshahzaibtariq@gmail.com
+RUN apt-get update && apt-get install -y nginx \
+ zip\
+ unzip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page287/doni-charity.zip /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+RUN unzip doni-charity.zip
+RUN cp -r html/* /usr/share/nginx/html
+RUN rm -rf html doni-charity.zip
+#CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 EXPOSE 80
